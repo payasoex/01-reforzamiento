@@ -20,7 +20,6 @@ export const useUsuarios = () => {
 
         if(res.data.data.length > 0){
             setUsuario(res.data.data);
-            // paginaRef.current++;
         }else{
             alert('No hay mas registros');
         }
