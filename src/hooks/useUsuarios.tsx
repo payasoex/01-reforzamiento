@@ -8,13 +8,8 @@ export const useUsuarios = () => {
     const paginaRef = useRef(1);
 
     useEffect( () => {
-        reqResApi.get<ReqResListado>('/users')
-        .then(res => {
-            console.log(res.data.data);
-            setUsuario(res.data.data)
-        })
-        .catch(console.log)
-    },[] )
+        cargarUsuarios();
+    },[])
 
     const cargarUsuarios = async() => {
         const res = await reqResApi.get<ReqResListado>('/users', {
@@ -25,7 +20,7 @@ export const useUsuarios = () => {
 
         if(res.data.data.length > 0){
             setUsuario(res.data.data);
-            paginaRef.current++;
+            // paginaRef.current++;
         }else{
             alert('No hay mas registros');
         }
